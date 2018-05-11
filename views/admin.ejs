@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            /*background:pink;*/
+        }
+        
+        .top {
+            height: 60px;
+            width: 100%;
+            /*background: blue;*/
+            border-bottom: 1px solid #333333;
+        }
+        
+        .top h1 {
+            font-size: 22px;
+        }
+        
+        .middle {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            /*background: pink;*/
+        }
+        
+        .left {
+            width: 260px;
+            height: 100%;
+            border-right: 1px solid #666666;
+            /*background: green;*/
+        }
+        
+        .right {
+            flex: 1;
+            height: 100%;
+            /*background: yellow;*/
+        }
+        
+        #content {
+            width: 100%;
+            height: 99%;
+        }
+    </style>
+    <script>
+        const uid = '<%= user.uid%>';
+        const token = '<%= user.token%>';
+        localStorage.setItem("uid", uid);
+        localStorage.setItem("token", token);
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <%- include top.ejs %>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <!-- 菜单区域 -->
+                <%- include menu.ejs %>
+            </div>
+            <div class="right">
+
+                <iframe id="content" name="content" frameborder="0" src="/admin/test1.html"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
