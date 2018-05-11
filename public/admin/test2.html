@@ -339,9 +339,19 @@
             });
         }
 
-        /**
-         *上传相关接口 
-         **/
+
+
+        $(".goods-cover").hover(function() {
+                layer.tips('点击按钮上传文件', '#fileToUpload', {
+                    tips: [1, '#666666'],
+                    time: 3000
+                });
+            }, function() {
+                // $("p").css("background-color", "pink");
+            })
+            /**
+             *上传相关接口 
+             **/
 
         function fileSelected() {
             var file = document.getElementById('fileToUpload').files[0];
@@ -385,6 +395,7 @@
             console.log(evt)
             var result = JSON.parse(evt.target.responseText);
             vm.goods_cover = result.path.replace("public", "")
+            layer.msg("封面图片上传完成！")
         }
 
         function uploadFailed(evt) {
