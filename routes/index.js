@@ -10,9 +10,13 @@ console.log(check)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', {
-        title: 'Express'
-    });
+    if (req.session.account) {
+        res.redirect(301, '/admin');
+    } else {
+        res.render('index', {
+            title: 'Express'
+        });
+    }
 });
 
 //登录后的管理页面
