@@ -15,5 +15,46 @@
       "name": "",
       "remark": ""
     }
+  ],
+  "goods": [
+    {
+      "name": "1",
+      "remark": "",
+      "goods_cover": "\\uploads\\H79my8fHfJxMu7xQpAfjK61_.jpg",
+      "state": "1",
+      "state1": "1",
+      "price": "1",
+      "price_6": "12",
+      "price_12": "",
+      "price_24": "",
+      "classifyId": "1a4afc20-54d1-11e8-89d4-29678b225170",
+      "id": "3bc8d820-5654-11e8-9a30-47dd26cd23cb"
+    },
+    {
+      "name": "weqw",
+      "remark": "",
+      "goods_cover": "\\uploads\\8YQMcSd6pxRLFEWJwMXloOKb.png",
+      "state": "1",
+      "state1": "1",
+      "price": "123",
+      "price_6": "12",
+      "price_12": "12",
+      "price_24": "12",
+      "classifyId": "1a4afc20-54d1-11e8-89d4-29678b225170",
+      "id": "99a1b240-5655-11e8-8acf-5f41f94d2433"
+    },
+    {
+      "name": "asda",
+      "remark": "",
+      "goods_cover": "\\uploads\\8saN53VrA4ROft5X_B4Uvs9J.png",
+      "state": "1",
+      "state1": "1",
+      "price": "123",
+      "price_6": "",
+      "price_12": "",
+      "price_24": "",
+      "classifyId": "1a4afc20-54d1-11e8-89d4-29678b225170",
+      "id": "32a20c10-5660-11e8-84f0-f7f303815dc1"
+    }
   ]
 }

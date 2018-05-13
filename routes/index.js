@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require("path");
 var ac = require('../src/controller/AmindController')
-
+var goods=require('../src/controller/GoodsController.js')
 
 var check = require('../src/filter/check.js');
 
@@ -73,5 +73,16 @@ router.get('/classify/queryAll', function(req, res, next) {
 
 router.post('/classify/update', ac.updateClassifyById)
 
+
+//商品管理
+router.post('/goods/add', function(req, res, next) {
+    goods.add(req, res);
+})
+
+router.get('/goods/queryAll', function(req, res, next) {
+    goods.queryAll(req, res);
+})
+
+router.post('/goods/update', goods.updateGoodsById)
 
 module.exports = router;
