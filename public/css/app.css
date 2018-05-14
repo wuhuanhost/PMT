@@ -1,0 +1,41 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Helvetica, Tahoma, Arial, "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    /* margin-top: 60px; */
+    margin: 0 auto;
+    width: 7.5rem;
+    background: #ffffff;
+    height: 100%;
+}
+
+header {
+    width: 7.5rem;
+    height: 0.88rem;
+    border-bottom: 2px solid #f5c946;
+    background: #52b2fc;
+    /* height: auto; */
+    /* //   margin-top: 0.4rem; */
+    /* //   padding-bottom: 0.3rem; */
+    font-size: 0.2rem;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}

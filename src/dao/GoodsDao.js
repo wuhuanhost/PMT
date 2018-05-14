@@ -10,7 +10,7 @@ const uuid1 = require('uuid/v1');
  * 添加分类
  */
 exports.add = function(goods, cb) {
-    goods.id=uuid1();
+    goods.id = uuid1();
     try {
         db.defaults({ goods: [] })
             .write()
@@ -49,7 +49,7 @@ exports.updateGoodsById = function(goods, cb) {
     console.log("==================================>")
     console.log(goods)
     try {
-        var dasd = db.get('goods').find({ 'id': goods.id }).assign(goods).write();
+        var dasd = db.get('goods').find({ 'classifyId': goods.classifyId, 'id': goods.id, }).assign(goods).write();
     } catch (error) {
         cb(error, null)
     }

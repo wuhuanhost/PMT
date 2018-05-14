@@ -157,7 +157,7 @@
                     <td>{{item.name}}</td>
                     <td width="100px" height="40px" @click="showImg(item)"><img @mouseover="showImgTip(item.id)" style="width:100%;height:100%;" :src="item.goods_cover" :id="item.id" alt=""></td>
                     <td>{{item.price}}</td>
-                    <td><span v-if="item.state==='1'">显示</span><span v-else>隐藏</span></td>
+                    <td><span v-if="item.state==='1'" class="label label-success">显示</span><span v-else class="label label-default">隐藏</span></td>
                     <td>{{item.remark}}</td>
                     <td style="text-align: center;width:200px;">
                         <button type="button" class="btn btn-primary btn-sm" @click="update(item)">
@@ -170,7 +170,8 @@
                 </tr>
                 <tr v-if="0>=list.length">
                     <td height="100px" class="bg bg-danger text-center" colspan="7">
-                        暂无查询数据！
+                        此分类下暂无商品数据！
+                        <button class="btn btn-primary" @click="addGoods()">添加商品</button>
                     </td>
                 </tr>
             </table>
@@ -303,7 +304,7 @@
                 return {
                     pageNo: 1,
                     pages: 1,
-                    pageSize: 2,
+                    pageSize: 10,
                     goodsList: [],
                     name: "",
                     goods_cover: "/admin/images/upload.png",
@@ -340,6 +341,12 @@
                     this.$nextTick(function() {
                         this.classifyList.pop();
                         this.classifyId = this.classifyList[0].id;
+                        this.name = "";
+                        this.price = "";
+                        this.price_6 = "";
+                        this.price_12 = "";
+                        this.price_24 = "";
+                        this.goods_cover = "/admin/images/upload.png";
                         var _this = this;
                         mylayer = layer.open({
                             title: "添加商品",
@@ -409,10 +416,9 @@
                 },
                 cancel: function() {
                     layer.close(mylayer);
-
                 },
                 del: function(id) {
-                    alert(id)
+                    layer.msg("删除操作正在开发中......")
                 },
                 showImgTip: function(id) {
                     layer.tips('点击查看大图', '#' + id, {
@@ -435,17 +441,19 @@
                     this.id = obj.id;
                     this.name = obj.name;
                     this.remark = obj.remark;
-                    this.goods_cover = obj.goods_cover,
-                        this.state = obj.state,
-                        this.state1 = obj.state1,
-                        this.price = obj.price,
-                        this.price_6 = obj.price_6,
-                        this.price_12 = obj.price_12,
-                        this.price_24 = obj.price_24,
-                        this.classifyId = obj.classifyId
+                    this.goods_cover = obj.goods_cover;
+                    this.state = obj.state;
+                    this.state1 = obj.state1;
+                    this.price = obj.price;
+                    this.price_6 = obj.price_6;
+                    this.price_12 = obj.price_12;
+                    this.price_24 = obj.price_24;
+                    this.classifyId = obj.classifyId;
                     this.$nextTick(function() {
                         this.action = "update";
-                        this.classifyId = this.classifyList[0].id;
+                        // this.classifyId = this.classifyList[0].id;
+                        this.classifyList.pop();
+                        var _this = this;
                         mylayer = layer.open({
                             title: "修改分类",
                             type: 1,
@@ -454,7 +462,15 @@
                             area: ['800px', '499px'], //宽高
                             shade: false,
                             shadeClose: true, //开启遮罩关闭
-                            content: $("#addGoods-template")
+                            content: $("#addGoods-template"),
+                            end: function() {
+                                _this.classifyList.push({
+                                    id: 0,
+                                    name: "全部分类",
+                                    remark: ""
+                                })
+                                _this.classifyId = _this.classifyList[_this.classifyList.length - 1].id;
+                            }
                         });
                     })
                 },
@@ -501,7 +517,8 @@
                     }
                     console.log(data)
                     updateApi(data);
-                    queryAll(this);
+                    this.list = pagination(this.pageNo, this.pageSize, this.paginationData);
+
                 },
                 search: function() {
 
@@ -557,7 +574,7 @@
                 },
                 dataType: 'json'
             });
-            queryAll(vm)
+
 
         }
 
@@ -571,8 +588,6 @@
                     remark: ""
                 })
                 _this.classifyId = result.data[result.data.length - 1].id;
-
-
             })
             $.get('/goods/queryAll', function(result) {
                 console.log(result)

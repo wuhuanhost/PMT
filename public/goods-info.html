@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 强制显示方式 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- 允许全屏模式浏览 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 定义safari顶端状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 开启WEB APP 支持 -->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <!-- WEB APP名称 -->
+    <meta name="apple-mobile-web-app-title" content="APP名">
+    <title> 随付贷商城</title>
+    <script type="text/javascript" src="js/utils/utils.js">
+    </script>
+    <link rel="stylesheet" href="css/lib/swiper-4.2.2.min.css">
+    <link rel="stylesheet" href="css/lib/font-awesome.min.css">
+</head>
+
+<body>
+    <div id="choice-goods">
+        <div class="goods-info">
+            <div class="goods-info-container">
+                <div class="close-btn">
+                    <i class="fa fa-close fa-large"></i>
+                </div>
+                <div class="goods-cover">
+                    <img src="./img/goods-info.png" alt="">
+                </div>
+                <div class="goods-price">
+                    <div class="goods-price-title"> <i class="fa fa-rmb" style="font-size:0.4rem;vertical-align: -2%"></i>1236.00</div>
+                    <div class="goods-type"> 已经选择</div>
+                </div>
+            </div>
+            <div style="width:100%;padding:0 0.5rem;">
+                <hr>
+            </div>
+            <div class="scroll">
+                <!-- 商品类别容器 -->
+                <div class="goods-type-container">
+                    <h2> 颜色
+                    </h2>
+                    <div class="goods-type-tags">
+                        <div class="goods-tag" data-val="1"> 1
+                        </div>
+                        <div class="goods-tag" data-val="2"> 2
+                        </div>
+                        <div class="goods-tag" data-val="3"> 3
+                        </div>
+                        <div class="goods-tag" data-val="4"> 4
+                        </div>
+                        <div class="goods-tag" data-val="5"> 5
+                        </div>
+                        <div class="goods-tag" data-val="6"> 6
+                        </div>
+                    </div>
+                </div>
+                <!-- 分期类别容器 -->
+                <div class="by-stages-container">
+                    <h2> 分期</h2>
+                    <div class="stages-tags" id="stages-tags">
+                        <div class="stages-tag" data-val="22*6">
+                            <p> 585.36 X12期限</p>
+                            <p> 免手续费</p>
+                        </div>
+                        <div class="stages-tag" data-val="10*12">
+                            <p> 585.36 X12期限 </p>
+                            <p> 免手续费</p>
+                        </div>
+                        <div class="stages-tag" data-val="6*24">
+                            <p> 585.36 X12期限</p>
+                            <p> 免手续费</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn" onclick="pay()">立即购买</div>
+    </div>
+    <div id="app">
+        <header onclick="back()">
+            <span style="font-size:0.6rem;"><i class="fa fa-angle-left fa-large"></i></span>
+        </header>
+        <div class="content">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./img/goods-info.png" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/goods-info.png" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/goods-info.png" alt="">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination">
+                </div>
+            </div>
+            <div class="goods-info-content">
+                <!-- 商品标题 -->
+                <div class="goods-title">
+                    <span> DBR拉菲集团</span>【整箱装】拉菲酒庄传奇系列波尔多产区赤霞珠、梅洛混酿干红葡萄酒750ml六瓶装2015
+                </div>
+                <div class="goods-remark">
+                    <div class="goods-remark-item">
+                        <div class="item-title"> 分期免息
+                        </div>
+                        <div class="item-contnets" style="text-align:center;position:relative;">
+                            <div id="money-remark" style="display:inline-block;">月供¥ 612.5 * 6 期</div>
+                            <div onclick="showMorePayInfo()" style="position:absolute;width:0.6rem;height:0.6rem;right:0;top:-0.3rem;text-align: right;">
+                                <i class="fa fa-angle-right fa-3x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goods-remark-item" style="margin-top:0.4rem;">
+                        <div class="item-title"> 颜色</div>
+                        <div class="item-contnets" style="position:relative;">
+                            <div class="goods-color goods-color-hover goods-tag" data-val="1" style="left:1rem;top:-0.1rem"> 棕色
+                            </div>
+                            <div class="goods-color goods-tag" data-val="2" style="left:2.6rem;top:-0.1rem"> 白色
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 商品信息 -->
+                <div class="goods-remark">
+                    <h2>商品信息</h2>
+                    <div class="goods-remark-item">
+                        <div class="item-title">商品编号</div>
+                        <div class="item-contnets">123456454</div>
+                    </div>
+                    <div class="goods-remark-item">
+                        <div class="item-title">产区</div>
+                        <div class="item-contnets">波尔多</div>
+                    </div>
+                    <div class="goods-remark-item">
+                        <div class="item-title">商品编号号码</div>
+                        <div class="item-contnets">商品编号商品编号商品编号商品编号商品编号
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-bottom:1.6rem">
+                <img src="img/goods-info.png" alt="">
+            </div>
+        </div>
+        <footer>
+            <div class="buy-price">
+                <i class="fa fa-rmb" style="vertical-align: -4%"></i>1699.00</div>
+            <div class="buy-btn " onclick="pay() ">立即购买</div>
+        </footer>
+    </div>
+    <script src="./js/lib/jquery-1.12.4.min.js ">
+    </script>
+    <script src="./js/lib/swiper-4.2.2.min.js ">
+    </script>
+    <script src="./js/lib/layer/layer.js ">
+    </script>
+    <script>
+        //加载js,css
+        var FilesArray = ["js/utils/utils.js", "css/app.css", "css/goods-info.css", "js/goods-info.js"];
+        loadCustomJsCss(FilesArray, function() {
+            // console.log("1111111")
+        })
+
+        $(document).ready(function() {
+            // console.log("dasdas")
+        })
+    </script>
+</body>
+
+</html>

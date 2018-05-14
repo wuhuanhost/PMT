@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 强制显示方式 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- 允许全屏模式浏览 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 定义safari顶端状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 开启WEB APP 支持 -->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <!-- WEB APP名称 -->
+    <meta name="apple-mobile-web-app-title" content="APP名">
+    <title>随付贷商城</title>
+    <script src="js/utils.js"></script>
+    <link rel="stylesheet" href="css/lib/swiper-4.2.2.min.css">
+    <link rel="stylesheet" href="css/lib/font-awesome.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <a href='shop.html'>
+            <div class="shopping-cart">
+                <i class="fa fa-shopping-cart fa-lg"></i>
+            </div>
+        </a>
+        <header>
+            <div class="header">
+                <div class="logo">
+                    <img src="images/logo.png" alt="">
+                    <span class="title">随付贷商城</span>
+                </div>
+                <div class="security">
+                    <img src="images/guanfangzhengming.png" style="width:1.4rem;padding-right:0.4rem;float:right;">
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="tags">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+                    </div>
+                    <!-- <div class="swiper-pagination"></div> -->
+                </div>
+            </div>
+        </header>
+        <div class="container">
+
+
+        </div>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/swiper-4.2.2.min.js"></script>
+
+    <script>
+        //加载js,css
+        var FilesArray = ["js/utils.js", "css/index.css", "js/index.js", "js/config.js"];
+        loadCustomJsCss(FilesArray, function() {
+            getData();
+        });
+
+
+
+        function getData() {
+
+            $.get('/data/db.json', function(result) {
+                console.log(result)
+                for (var i = 0; i < result.classify.length; i++) {
+                    if (i === 0) {
+                        swiper.appendSlide('<div class="swiper-slide active" id="' + result.classify[i].id + '" data="' + i + '">' + result.classify[i].name + '</div>')
+                    } else {
+                        swiper.appendSlide('<div class="swiper-slide" id="' + result.classify[i].id + '" data="' + i + '">' + result.classify[i].name + '</div>')
+                    }
+                    $(".container").append('<div class="goods-list" id="' + result.classify[i].id + '-view"></div>')
+                }
+                initGoods(result.goods)
+                $(".swiper-slide").width("2rem");
+                $('.swiper-container>.swiper-wrapper>.swiper-slide').click(function() {
+                    var id = $(this).attr("id");
+                    $(".goods-list").hide();
+                    $("#" + id + "-view").attr("style", "display:flex;");
+                    $(this).addClass("active").siblings().removeClass("active");
+                });
+
+
+                //获取浏览器参数，跳转到指定的nav
+                var current = GetQueryString("type");
+
+                if (current) {
+                    $("#" + current).addClass("active").siblings().removeClass("active");
+                    var currentIndex = $("#" + current).attr("data");
+                    goSlide(swiper, currentIndex)
+                }
+            })
+        }
+
+
+        function initGoods(goods) {
+            for (var i = 0; i < goods.length; i++) {
+                var el = ` <div class="good-item" onclick="go(id)">
+                    <div class="goods-cover">
+                        <img src="${goods[i].goods_cover}" style="width:2.2rem;height:2.6rem;display:inline-block;vertical-align: middle;margin-top:1rem;">
+                    `
+                if (parseInt(goods[i].state1) === 1) {
+                    el += `<span class="goods-remark">免手续费</span>`;
+                }
+
+                el += `</div>
+                    <div class="goods-name">${goods[i].name}</div>
+                    <div class="goods-price-info">
+                        <div class="goods-price"><i class="fa fa-cny"></i>${goods[i].price}</div>`
+                if ((goods[i].price_6 && goods[i].price_12) || (goods[i].price_6 && goods[i].price_24) || (goods[i].price_12 && goods[i].price_24)) {
+                    el += `<div class="goods-price-installment">`
+                } else {
+                    el += `<div class="goods-price-installment" style="flex-direction:row">`
+                }
+
+                if (goods[i].price_6) {
+                    el += `<div><i class="fa fa-cny"></i>${goods[i].price_6}x6期</div>`
+                }
+                if (goods[i].price_12) {
+                    el += `<div><i class="fa fa-cny"></i>${goods[i].price_12}x12期</div>`
+                }
+                if (goods[i].price_24) {
+                    el += `<div><i class="fa fa-cny"></i>${goods[i].price_12}x12期</div>`
+                }
+                el += `</div>
+                    </div>
+                </div>`
+                if (parseInt(goods[i].state) === 1) {
+                    $("#" + goods[i].classifyId + "-view").append(el);
+                }
+            }
+
+            var _id = $($('.swiper-container>.swiper-wrapper>.swiper-slide')[0]).attr("id")
+            $("#" + _id + "-view").attr("style", "display:flex;");
+        }
+    </script>
+</body>
+
+</html>

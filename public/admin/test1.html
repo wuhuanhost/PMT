@@ -35,7 +35,7 @@
                 <tr v-for="item in addClassifyList">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
-                    <td><span v-if="parseInt(item.state)===1">显示</span><span v-else>隐藏</span></td>
+                    <td><span v-if="parseInt(item.state)===1" class="label label-success">显示</span><span v-else class="label label-default">隐藏</span></td>
                     <td>{{item.remark}}</td>
                     <td style="text-align: center;width:200px;">
                         <button type="button" class="btn btn-primary btn-sm" @click="update(item)">
@@ -114,12 +114,16 @@
                         mylayer = layer.open({
                             title: "添加分类",
                             type: 1,
-                            closeBtn: 0, //不显示关闭按钮
+                            closeBtn: 1, //不显示关闭按钮
                             anim: 2,
                             area: ['600px', '300px'], //宽高
                             shade: false,
-                            shadeClose: false, //开启遮罩关闭
-                            content: $("#addClassify-template")
+                            shadeClose: true, //开启遮罩关闭
+                            content: $("#addClassify-template"),
+                            end: function() {
+                                this.name = "";
+                                this.remark = "";
+                            }
                         });
                         this.action = "add";
                     })
@@ -148,7 +152,7 @@
                     layer.close(mylayer);
                 },
                 del: function(id) {
-                    alert(id)
+                    layer.msg("删除操作正在开发中......")
                 },
                 update: function(obj) {
                     console.log(obj)
@@ -161,11 +165,11 @@
                         mylayer = layer.open({
                             title: "修改分类",
                             type: 1,
-                            closeBtn: 0, //不显示关闭按钮
+                            closeBtn: 1, //不显示关闭按钮
                             anim: 2,
                             area: ['600px', '300px'], //宽高
                             shade: false,
-                            shadeClose: false, //开启遮罩关闭
+                            shadeClose: true, //开启遮罩关闭
                             content: $("#addClassify-template")
                         });
                     })

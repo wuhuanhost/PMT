@@ -1,0 +1,257 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Helvetica, Tahoma, Arial, "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    /* margin-top: 60px; */
+    margin: 0 auto;
+    width: 7.5rem;
+    background: #f5f4f9;
+    height: 100%;
+}
+
+header {
+    width: 7.5rem;
+    height: 3.2rem;
+    background: #ffffff;
+    height: auto;
+    padding-top: 0.4rem;
+    padding-bottom: 0.3rem;
+    /* position: fixed; */
+    background: #ffffff;
+    top: 0;
+    z-index: 999;
+}
+
+.container {
+    /* margin-top: 3.2rem; */
+    height: calc(100% - 3.2rem);
+    /* background-color: red; */
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.header img {
+    width: 1.1rem;
+}
+
+.header .logo {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    padding-left: 0.34rem;
+}
+
+.header .title {
+    font-size: 0.26rem;
+    margin-left: 0.2rem;
+    color: #e2764f;
+}
+
+.header .security {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+}
+
+.header .security img {
+    position: absolute;
+    right: 0rem;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 0.3rem;
+    width: 7.5rem;
+}
+
+.tag {
+    width: 1.8rem;
+    height: 0.9rem;
+    border-radius: 0.1rem;
+    font-size: 0.22rem;
+    background: #f6f6f6;
+    line-height: 0.9rem;
+    font-size: 0.26rem;
+}
+
+.tag .select {
+    background: #4b4a48;
+    color: #ffffff;
+}
+
+.goods-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* align-items: center; */
+    background: #f5f4f9;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.good-item {
+    width: 3.7rem;
+    height: 5.4rem;
+    background: #ffffff;
+    margin-top: 0.1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.good-item .goods-cover {
+    width: 100%;
+    height: 3.8rem;
+    /* // line-height: 3.2rem; */
+    /* // background: red; */
+    position: relative;
+}
+
+.good-item .goods-cover .goods-remark {
+    display: inline-block;
+    width: 1rem;
+    height: 0.4rem;
+    border: 1px solid #e2764f;
+    position: absolute;
+    left: 0.3rem;
+    top: 0.3rem;
+    color: #e2764f;
+    font-size: 0.2rem;
+}
+
+.good-item .goods-name {
+    width: 100%;
+    height: 0.4rem;
+    /* // background: blue; */
+    font-size: 0.26rem;
+    line-height: 0.4rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.good-item .goods-price-info {
+    width: 100%;
+    flex: 1;
+    /* // background: orange; */
+    display: flex;
+    flex-direction: row;
+    padding: 0.09rem 0;
+    justify-content: center;
+    align-items: center
+}
+
+.goods-price {
+    flex: 1;
+    height: 100%;
+    color: #e2e2e2;
+    font-size: 0.26rem;
+    text-align: center;
+    padding-left: 0.3rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.goods-price-installment {
+    flex: 1;
+    height: 100%;
+    /* // background: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.goods-price-installment div {
+    font-size: 0.26rem;
+    flex: 1;
+    color: #e2764f;
+    margin: 0;
+}
+
+
+/**----------------------滚动菜单设置-------------------------**/
+
+.swiper-container {
+    width: 7.5rem;
+    height: 0.9rem;
+    /* border: 1px solid #999999; */
+}
+
+.swiper-wrapper {
+    padding: 0 0.34rem;
+}
+
+.swiper-slide {
+    text-align: center;
+    line-height: 50px;
+    font-size: 12px;
+    background: #f6f6f6;
+    /* padding: 0 10px; */
+    width: 10px;
+    font-size: 0.3rem;
+}
+
+.active {
+    color: #eb4610;
+}
+
+.goods-list {
+    display: none;
+}
+
+#mobile-view {
+    display: flex;
+}
+
+
+/**--------------------购物车按钮样式-----------------------**/
+
+.shopping-cart {
+    width: 1rem;
+    height: 1rem;
+    background: #e2764f;
+    border: 1px solid #eeeeee;
+    position: fixed;
+    bottom: 1rem;
+    right: 0.36rem;
+    z-index: 9999;
+    border-radius: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    color: #eeeeee;
+    font-size: 0.46rem;
+}
