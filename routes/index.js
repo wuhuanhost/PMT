@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require("path");
 var ac = require('../src/controller/AmindController')
-var goods=require('../src/controller/GoodsController.js')
+var goods = require('../src/controller/GoodsController.js')
 
 var check = require('../src/filter/check.js');
 
@@ -10,7 +10,7 @@ console.log(check)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    if (req.session.account) {
+    if (req.session.account && req.session.uid && req.session.token) {
         res.redirect(301, '/admin');
     } else {
         res.render('index', {
@@ -18,6 +18,13 @@ router.get('/', function(req, res, next) {
         });
     }
 });
+
+router.get('/logout', function(req, res, next) {
+    delete req.session.account;
+    delete req.session.uid;
+    delete req.session.session;
+    res.redirect(301, '/index');
+})
 
 //登录后的管理页面
 router.get('/admin', check.checkAdminLogin, function(req, res, next) {
@@ -31,7 +38,7 @@ router.get('/admin', check.checkAdminLogin, function(req, res, next) {
         name: "测试菜单3",
         href: "/admin/test3.html"
     }];
-    res.render('admin', { menu: menu, user: { uid: req.session.uid, token: req.session.token } });
+    res.render('admin', { menu: menu, user: { uid: req.session.uid, token: req.session.token, account: req.session.account } });
 
 });
 

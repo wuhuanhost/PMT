@@ -3,7 +3,8 @@
     {
       "id": "1a4afc20-54d1-11e8-89d4-29678b225170",
       "name": "123456",
-      "remark": "1231231232"
+      "remark": "1231231232",
+      "state": "1"
     },
     {
       "id": "382c2780-54e2-11e8-b4eb-f3f507ad116c",
@@ -12,7 +13,7 @@
     },
     {
       "id": "da302640-54e6-11e8-8f2a-f734841e955d",
-      "name": "",
+      "name": "测试分类",
       "remark": ""
     }
   ],
@@ -27,14 +28,14 @@
       "price_6": "12",
       "price_12": "",
       "price_24": "",
-      "classifyId": "1a4afc20-54d1-11e8-89d4-29678b225170",
+      "classifyId": "382c2780-54e2-11e8-b4eb-f3f507ad116c",
       "id": "3bc8d820-5654-11e8-9a30-47dd26cd23cb"
     },
     {
       "name": "weqw",
       "remark": "",
       "goods_cover": "\\uploads\\8YQMcSd6pxRLFEWJwMXloOKb.png",
-      "state": "1",
+      "state": "0",
       "state1": "1",
       "price": "123",
       "price_6": "12",
@@ -55,6 +56,30 @@
       "price_24": "",
       "classifyId": "1a4afc20-54d1-11e8-89d4-29678b225170",
       "id": "32a20c10-5660-11e8-84f0-f7f303815dc1"
+    }, {
+      "name": "1",
+      "remark": "",
+      "goods_cover": "\\uploads\\H79my8fHfJxMu7xQpAfjK61_.jpg",
+      "state": "1",
+      "state1": "1",
+      "price": "1",
+      "price_6": "12",
+      "price_12": "",
+      "price_24": "",
+      "classifyId": "382c2780-54e2-11e8-b4eb-f3f507ad116c",
+      "id": "3bc8d820-5654-11e8-9a30-47dd26cd23cb"
+    }, {
+      "name": "1",
+      "remark": "",
+      "goods_cover": "\\uploads\\H79my8fHfJxMu7xQpAfjK61_.jpg",
+      "state": "1",
+      "state1": "1",
+      "price": "1",
+      "price_6": "12",
+      "price_12": "",
+      "price_24": "",
+      "classifyId": "382c2780-54e2-11e8-b4eb-f3f507ad116c",
+      "id": "3bc8d820-5654-11e8-9a30-47dd26cd23cb"
     }
   ]
 }

@@ -46,7 +46,7 @@ exports.queryAllClassify = function(cb) {
  */
 exports.updateClassifyById = function(cla, cb) {
     try {
-        var dasd = db.get('classify').find({ 'id': cla.id }).assign({ 'id': cla.id, 'name': cla.name, 'remark': cla.remark }).write();
+        var dasd = db.get('classify').find({ 'id': cla.id }).assign(cla).write();
         console.log(dasd)
     } catch (error) {
         cb(error, null)

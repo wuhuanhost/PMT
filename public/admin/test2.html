@@ -6,106 +6,107 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
-    html,
-    body {
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-    }
-
-    .goods-cover:before {
-        position: absolute;
-        content: "商品封面";
-        height: 40px;
-        font-size: 14px;
-        font-weight: bold;
-        /*top: -30px;*/
-        width: 100%;
-        text-align: center;
-        left: 0;
-    }
-
-    .img {
-        position: absolute;
-        width: 90%;
-        top: 9%;
-        left: 5%;
-        height: 120px;
-        /* background: red; */
-        padding: 10px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .goods-cover {
-        text-align: center;
-        border-radius: 3px;
-        border: 1px dashed #ccc;
-        padding: 3px;
-        position: absolute;
-        width: 220px;
-        height: 180px;
-        top: 20px;
-        right: 40px;
-    }
-
-    .goods-other {
-        text-align: center;
-        border-radius: 3px;
-        border: 1px dashed #ccc;
-        padding: 3px;
-        position: absolute;
-        width: 220px;
-        height: 83px;
-        top: 217px;
-        right: 40px;
-    }
-
-    .file {
-        position: absolute;
-        display: inline-block;
-        left: 0;
-        width: 90%;
-        height: 30px;
-        background: #D0EEFF;
-        border: 1px solid #99D3F5;
-        border-radius: 4px;
-        padding: 4px 12px;
-        overflow: hidden;
-        color: #1E88C7;
-        text-decoration: none;
-        text-indent: 0;
-        line-height: 20px;
-        bottom: 0;
-        margin: 5%;
-    }
-
-    .file input {
-        position: absolute;
-        font-size: 10px;
-        right: 0;
-        top: 0;
-        opacity: 0;
-    }
-
-    .file:hover {
-        background: #AADFFD;
-        border-color: #78C3F3;
-        color: #004974;
-        text-decoration: none;
-    }
-    img{
-    	cursor:pointer;
-    }
-
-    td,
-    tr,
-    th {
-        text-align: center;
-        vertical-align: middle !important;
-    }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+        
+        .goods-cover:before {
+            position: absolute;
+            content: "商品封面";
+            height: 40px;
+            font-size: 14px;
+            font-weight: bold;
+            /*top: -30px;*/
+            width: 100%;
+            text-align: center;
+            left: 0;
+        }
+        
+        .img {
+            position: absolute;
+            width: 90%;
+            top: 9%;
+            left: 5%;
+            height: 120px;
+            /* background: red; */
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .goods-cover {
+            text-align: center;
+            border-radius: 3px;
+            border: 1px dashed #ccc;
+            padding: 3px;
+            position: absolute;
+            width: 220px;
+            height: 180px;
+            top: 20px;
+            right: 40px;
+        }
+        
+        .goods-other {
+            text-align: center;
+            border-radius: 3px;
+            border: 1px dashed #ccc;
+            padding: 3px;
+            position: absolute;
+            width: 220px;
+            height: 83px;
+            top: 217px;
+            right: 40px;
+        }
+        
+        .file {
+            position: absolute;
+            display: inline-block;
+            left: 0;
+            width: 90%;
+            height: 30px;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 20px;
+            bottom: 0;
+            margin: 5%;
+        }
+        
+        .file input {
+            position: absolute;
+            font-size: 10px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+        
+        .file:hover {
+            background: #AADFFD;
+            border-color: #78C3F3;
+            color: #004974;
+            text-decoration: none;
+        }
+        
+        img {
+            cursor: pointer;
+        }
+        
+        td,
+        tr,
+        th {
+            text-align: center;
+            vertical-align: middle !important;
+        }
     </style>
 </head>
 
@@ -125,11 +126,17 @@
                 <div class="form-group" style="margin-left:20px;">
                     <label for="exampleInputEmail2">商品状态</label>
                     <label class="radio-inline">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">显示
+                        <input type="radio" name="inlineRadioOptions" v-model="querystate" id="inlineRadio1" value="-1">全部
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">隐藏
+                        <input type="radio" name="inlineRadioOptions" v-model="querystate" id="inlineRadio1" value="1">显示
                     </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" v-model="querystate" id="inlineRadio2" value="0">隐藏
+                    </label>
+                </div>
+                <div class="form-group" style="margin-left:20px;">
+                    <button class="btn btn-primary pull-right" @click="search()">查询</button>
                 </div>
                 <button class="btn btn-primary pull-right" @click="addGoods()">添加商品</button>
             </div>
@@ -145,10 +152,10 @@
                     <th>商品备注</th>
                     <th>操作</th>
                 </tr>
-                <tr v-for="item in goodsList">
+                <tr v-for="item in list" v-if="list.length>=1">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
-                    <td width="100px" height="40px" @click="showImg(item)" ><img  @mouseover="showImgTip(item.id)" style="width:100%;height:100%;" :src="item.goods_cover" :id="item.id" alt=""></td>
+                    <td width="100px" height="40px" @click="showImg(item)"><img @mouseover="showImgTip(item.id)" style="width:100%;height:100%;" :src="item.goods_cover" :id="item.id" alt=""></td>
                     <td>{{item.price}}</td>
                     <td><span v-if="item.state==='1'">显示</span><span v-else>隐藏</span></td>
                     <td>{{item.remark}}</td>
@@ -161,10 +168,17 @@
                         </button>
                     </td>
                 </tr>
+                <tr v-if="0>=list.length">
+                    <td height="100px" class="bg bg-danger text-center" colspan="7">
+                        暂无查询数据！
+                    </td>
+                </tr>
             </table>
-            <div class="clearfix pull-right">
+
+            <div v-if="list.length>=1" class="clearfix pull-right">
                 <navigation :pages="pages" :current.sync="pageNo" @navpage="msgListView"></navigation>
             </div>
+
         </div>
         <!-- 添加商品 -->
         <div id="addGoods-template" style="display:none;padding:20px;padding-right:40px;position:relative;">
@@ -279,311 +293,378 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/vue/2.5.15/vue.js"></script>
     <script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
-    <script src="http://www.jq22.com/demo/Vue_pagination201708150108/js/pagination.js"></script>
+    <script src="/admin/js/pagination.js"></script>
     <script>
-    // alert(localStorage.getItem('uid') + "  " + localStorage.getItem('token'));
-    var mylayer = null;
-    let vm = new Vue({
-        el: "#app",
-        data: function() {
-            return {
-                pageNo: 1,
-                pages: 15,
-                goodsList: [],
-                name: "",
-                goods_cover: "/admin/images/upload.png",
-                remark: "",
-                id: "",
-                price: "",
-                price_6: 12.00,
-                price_12: 12.00,
-                price_24: 12.00,
-                state: 1,
-                state1: 1,
-                action: "",
-                classifyList: [], //所有分类
-                classifyId: "", //选中分类的id
-            }
-        },
-        mounted: function() {
-            queryAll(this);
-        },
-        methods: {
-            msgListView(curPage) {
-                //根据当前页获取数据
-                this.pageNo = curPage;
-                //分页查询逻辑
-                //Todo
-                // alert(curPage)
+        // alert(localStorage.getItem('uid') + "  " + localStorage.getItem('token'));
+        var mylayer = null;
+        let vm = new Vue({
+            el: "#app",
+            data: function() {
+                return {
+                    pageNo: 1,
+                    pages: 1,
+                    pageSize: 2,
+                    goodsList: [],
+                    name: "",
+                    goods_cover: "/admin/images/upload.png",
+                    remark: "",
+                    id: "",
+                    price: "",
+                    price_6: 12.00,
+                    price_12: 12.00,
+                    price_24: 12.00,
+                    state: 1,
+                    state1: 1,
+                    action: "",
+                    classifyList: [], //所有分类
+                    classifyId: "", //选中分类的id
+                    classifyId1: "",
+                    querystate: "-1", //查询按钮使用的状态
+                    paginationData: [], //分号页的数据
+                    list: [], //当前页显示的数据
+                }
             },
-            addGoods: function() {
-                this.$nextTick(function() {
-                    mylayer = layer.open({
-                        title: "添加商品",
-                        type: 1,
-                        closeBtn: 1, //不显示关闭按钮
-                        anim: 2,
-                        area: ['800px', '499px'], //宽高
-                        shade: false,
-                        shadeClose: true, //开启遮罩关闭
-                        content: $("#addGoods-template")
-                    });
-                    this.action = "add";
-                })
-
-            },
-            add: function(e) {
-                // alert(this.name)
-                if (!this.name) {
-                    layer.tips('商品名称不能为空！', '#name', {
-                        tips: [3, '#666666'],
-                        time: 3000
-                    });
-                    return;
-                }
-
-                if (!this.price) {
-                    layer.tips('商品价格不能为空！', '#price', {
-                        tips: [3, '#666666'],
-                        time: 3000
-                    });
-                    return;
-                }
-
-
-                if (this.goods_cover === "/admin/images/upload.png") {
-                    layer.tips('请上传商品图片！', '#file', {
-                        tips: [1, '#666666'],
-                        time: 3000
-                    });
-                    return;
-                }
-
-                //添加商品
-                var data = {
-                    "name": this.name,
-                    "remark": this.remark,
-                    "goods_cover": this.goods_cover,
-                    "state": this.state,
-                    "state1": this.state1,
-                    "price": this.price,
-                    "price_6": this.price_6,
-                    "price_12": this.price_12,
-                    "price_24": this.price_24,
-                    "classifyId": this.classifyId
-                }
-                console.log(data)
-                addApi(data);
+            mounted: function() {
                 queryAll(this);
+            },
+            methods: {
+                msgListView(curPage) {
+                    //根据当前页获取数据
+                    this.pageNo = curPage;
+                    this.list = pagination(this.pageNo, this.pageSize, this.paginationData);
+                    //分页查询逻辑
+                    //Todo
+                    // alert(curPage)
+                },
+                addGoods: function() {
+                    this.$nextTick(function() {
+                        this.classifyList.pop();
+                        this.classifyId = this.classifyList[0].id;
+                        var _this = this;
+                        mylayer = layer.open({
+                            title: "添加商品",
+                            type: 1,
+                            closeBtn: 1, //不显示关闭按钮
+                            anim: 2,
+                            area: ['800px', '499px'], //宽高
+                            shade: false,
+                            shadeClose: true, //开启遮罩关闭
+                            content: $("#addGoods-template"),
+                            end: function() {
+                                _this.classifyList.push({
+                                        id: 0,
+                                        name: "全部分类",
+                                        remark: ""
+                                    })
+                                    // _this.classifyId = _this.classifyList[_this.classifyList.length - 1].id;
+                            }
+                        });
+                        this.action = "add";
+                    })
+                },
+                add: function(e) {
+                    // alert(this.name)
+                    if (!this.name) {
+                        layer.tips('商品名称不能为空！', '#name', {
+                            tips: [3, '#666666'],
+                            time: 3000
+                        });
+                        return;
+                    }
 
-            },
-            cancel: function() {
-                layer.close(mylayer);
-            },
-            del: function(id) {
-                alert(id)
-            },
-            showImgTip:function(id){
-				        layer.tips('点击查看大图', '#'+id, {
-				            tips: [2, '#666666'],
-				            time: 1000
-				        }); 	
-            },
-            showImg: function(goods) {
-                layer.open({
-                    type: 1,
-                    title: false,
-                    closeBtn: 0,
-                    area: '516px',
-                    skin: 'layui-layer-nobg', //没有背景色
-                    shadeClose: true,
-                    content: '<img style="width:100%;height:100%;" src="'+goods.goods_cover+'">'
-                });
-            },
-            update: function(obj) {
-                this.id = obj.id;
-                this.name = obj.name;
-                this.remark = obj.remark;
-                this.goods_cover = obj.goods_cover,
-                    this.state = obj.state,
-                    this.state1 = obj.state1,
-                    this.price = obj.price,
-                    this.price_6 = obj.price_6,
-                    this.price_12 = obj.price_12,
-                    this.price_24 = obj.price_24,
-                    this.classifyId = obj.classifyId
-                this.$nextTick(function() {
-                    this.action = "update";
-                    mylayer = layer.open({
-                        title: "修改分类",
+                    if (!this.price) {
+                        layer.tips('商品价格不能为空！', '#price', {
+                            tips: [3, '#666666'],
+                            time: 3000
+                        });
+                        return;
+                    }
+
+
+                    if (this.goods_cover === "/admin/images/upload.png") {
+                        layer.tips('请上传商品图片！', '#file', {
+                            tips: [1, '#666666'],
+                            time: 3000
+                        });
+                        return;
+                    }
+
+                    //添加商品
+                    var data = {
+                        "name": this.name,
+                        "remark": this.remark,
+                        "goods_cover": this.goods_cover,
+                        "state": this.state,
+                        "state1": this.state1,
+                        "price": this.price,
+                        "price_6": this.price_6,
+                        "price_12": this.price_12,
+                        "price_24": this.price_24,
+                        "classifyId": this.classifyId
+                    }
+                    console.log(data)
+                    addApi(data);
+                    queryAll(this);
+
+                },
+                cancel: function() {
+                    layer.close(mylayer);
+
+                },
+                del: function(id) {
+                    alert(id)
+                },
+                showImgTip: function(id) {
+                    layer.tips('点击查看大图', '#' + id, {
+                        tips: [2, '#666666'],
+                        time: 1000
+                    });
+                },
+                showImg: function(goods) {
+                    layer.open({
                         type: 1,
-                        closeBtn: 0, //不显示关闭按钮
-                        anim: 2,
-                        area: ['800px', '499px'], //宽高
-                        shade: false,
-                        shadeClose: true, //开启遮罩关闭
-                        content: $("#addGoods-template")
+                        title: false,
+                        closeBtn: 0,
+                        area: '516px',
+                        skin: 'layui-layer-nobg', //没有背景色
+                        shadeClose: true,
+                        content: '<img style="width:100%;height:100%;" src="' + goods.goods_cover + '">'
                     });
+                },
+                update: function(obj) {
+                    this.id = obj.id;
+                    this.name = obj.name;
+                    this.remark = obj.remark;
+                    this.goods_cover = obj.goods_cover,
+                        this.state = obj.state,
+                        this.state1 = obj.state1,
+                        this.price = obj.price,
+                        this.price_6 = obj.price_6,
+                        this.price_12 = obj.price_12,
+                        this.price_24 = obj.price_24,
+                        this.classifyId = obj.classifyId
+                    this.$nextTick(function() {
+                        this.action = "update";
+                        this.classifyId = this.classifyList[0].id;
+                        mylayer = layer.open({
+                            title: "修改分类",
+                            type: 1,
+                            closeBtn: 0, //不显示关闭按钮
+                            anim: 2,
+                            area: ['800px', '499px'], //宽高
+                            shade: false,
+                            shadeClose: true, //开启遮罩关闭
+                            content: $("#addGoods-template")
+                        });
+                    })
+                },
+                updateData: function() {
+                    // alert(this.name)
+                    if (!this.name) {
+                        layer.tips('商品名称不能为空！', '#name', {
+                            tips: [3, '#666666'],
+                            time: 3000
+                        });
+                        return;
+                    }
+
+                    if (!this.price) {
+                        layer.tips('商品价格不能为空！', '#price', {
+                            tips: [3, '#666666'],
+                            time: 3000
+                        });
+                        return;
+                    }
+
+
+                    if (this.goods_cover === "/admin/images/upload.png") {
+                        layer.tips('请上传商品图片！', '#file', {
+                            tips: [1, '#666666'],
+                            time: 3000
+                        });
+                        return;
+                    }
+
+                    //添加商品
+                    var data = {
+                        "name": this.name,
+                        "remark": this.remark,
+                        "goods_cover": this.goods_cover,
+                        "state": this.state,
+                        "state1": this.state1,
+                        "price": this.price,
+                        "price_6": this.price_6,
+                        "price_12": this.price_12,
+                        "price_24": this.price_24,
+                        "classifyId": this.classifyId,
+                        "id": this.id
+                    }
+                    console.log(data)
+                    updateApi(data);
+                    queryAll(this);
+                },
+                search: function() {
+
+                    var filterData = [];
+                    var gl = this.goodsList;
+                    var newGoodList = gl.filter(filter1);
+                    this.paginationData = newGoodList;
+                    //分页
+                    this.list = pagination(1, this.pageSize, this.paginationData);
+                    // console.log(newGoodList)
+                }
+            }
+        })
+
+        //分页方法
+        function pagination(pageNo, pageSize, array) {
+            console.log(array)
+            vm.pages = parseInt((array.length - 1) / pageSize + 1);
+            var offset = (pageNo - 1) * pageSize;
+            return (offset + pageSize >= array.length) ? array.slice(offset, array.length) : array.slice(offset, offset + pageSize);
+        }
+
+        function filter1(data) {
+            var classifyId = vm.classifyId;
+            var querystate = vm.querystate;
+
+            // alert(classifyId + " | " + querystate)
+            if (parseInt(classifyId) === 0 && parseInt(querystate) === -1) {
+                // alert("d")
+                return data;
+            }
+            if (parseInt(classifyId) === 0) {
+                return data.state === querystate;
+            }
+            if (parseInt(querystate) === -1) {
+                return data.classifyId === classifyId;
+            }
+            if (parseInt(classifyId) !== 0 && parseInt(querystate) !== -1) {
+                // alert("ds")
+                return (data.classifyId === classifyId) && (data.state === querystate)
+            }
+
+        }
+
+        function updateApi(data) {
+            $.ajax({
+                type: 'POST',
+                url: "/goods/update",
+                data: data,
+                success: function(data) {
+                    layer.msg("商品修改成功！！！")
+                    layer.close(mylayer);
+                },
+                dataType: 'json'
+            });
+            queryAll(vm)
+
+        }
+
+        function queryAll(_this) {
+
+            $.get('/classify/queryAll', function(result) {
+                _this.classifyList = result.data;
+                _this.classifyList.push({
+                    id: 0,
+                    name: "全部分类",
+                    remark: ""
                 })
-            },
-            updateData: function() {
-                // alert(this.name)
-                if (!this.name) {
-                    layer.tips('商品名称不能为空！', '#name', {
-                        tips: [3, '#666666'],
-                        time: 3000
-                    });
-                    return;
-                }
-
-                if (!this.price) {
-                    layer.tips('商品价格不能为空！', '#price', {
-                        tips: [3, '#666666'],
-                        time: 3000
-                    });
-                    return;
-                }
+                _this.classifyId = result.data[result.data.length - 1].id;
 
 
-                if (this.goods_cover === "/admin/images/upload.png") {
-                    layer.tips('请上传商品图片！', '#file', {
-                        tips: [1, '#666666'],
-                        time: 3000
-                    });
-                    return;
-                }
+            })
+            $.get('/goods/queryAll', function(result) {
+                console.log(result)
+                _this.goodsList = result.data;
 
-                //添加商品
-                var data = {
-                    "name": this.name,
-                    "remark": this.remark,
-                    "goods_cover": this.goods_cover,
-                    "state": this.state,
-                    "state1": this.state1,
-                    "price": this.price,
-                    "price_6": this.price_6,
-                    "price_12": this.price_12,
-                    "price_24": this.price_24,
-                    "classifyId": this.classifyId,
-                    "id": this.id
-                }
-                console.log(data)
-                updateApi(data);
-                queryAll(this);
+                _this.paginationData = result.data;
+                //分页
+                _this.list = pagination(1, _this.pageSize, _this.paginationData);
+            })
+        }
+
+
+        function addApi(data) {
+            $.ajax({
+                type: 'POST',
+                url: "/goods/add",
+                data: data,
+                success: function(data) {
+                    layer.msg("商品添加成功！！！")
+                    layer.close(mylayer);
+                },
+                dataType: 'json'
+            });
+        }
+
+
+
+        // $(".goods-cover").hover(function() {
+        //     layer.tips('点击按钮上传文件', '#fileToUpload', {
+        //         tips: [1, '#666666'],
+        //         time: 3000
+        //     });
+        // }, function() {
+        //     // $("p").css("background-color", "pink");
+        // })
+        /**
+         *上传相关接口 
+         **/
+
+        function fileSelected() {
+            var file = document.getElementById('fileToUpload').files[0];
+            if (file) {
+                var fileSize = 0;
+                if (file.size > 1024 * 1024)
+                    fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+                else
+                    fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+                // document.getElementById('fileName').innerHTML = 'Name: ' + file.name;
+                // document.getElementById('fileSize').innerHTML = 'Size: ' + fileSize;
+                // document.getElementById('fileType').innerHTML = 'Type: ' + file.type;
+                uploadFile();
             }
         }
-    })
 
-    function updateApi(data) {
-        $.ajax({
-            type: 'POST',
-            url: "/goods/update",
-            data: data,
-            success: function(data) {
-                layer.msg("商品修改成功！！！")
-                layer.close(mylayer);
-            },
-            dataType: 'json'
-        });
-        queryAll(vm)
-    }
-
-    function queryAll(_this) {
-
-        $.get('/classify/queryAll', function(result) {
-            _this.classifyList = result.data;
-            _this.classifyId = result.data[0].id;
-
-        })
-        $.get('/goods/queryAll', function(result) {
-            console.log(result)
-            _this.goodsList = result.data;
-
-
-        })
-    }
-
-
-    function addApi(data) {
-        $.ajax({
-            type: 'POST',
-            url: "/goods/add",
-            data: data,
-            success: function(data) {
-                layer.msg("商品添加成功！！！")
-                layer.close(mylayer);
-            },
-            dataType: 'json'
-        });
-    }
-
-
-
-    // $(".goods-cover").hover(function() {
-    //     layer.tips('点击按钮上传文件', '#fileToUpload', {
-    //         tips: [1, '#666666'],
-    //         time: 3000
-    //     });
-    // }, function() {
-    //     // $("p").css("background-color", "pink");
-    // })
-    /**
-     *上传相关接口 
-     **/
-
-    function fileSelected() {
-        var file = document.getElementById('fileToUpload').files[0];
-        if (file) {
-            var fileSize = 0;
-            if (file.size > 1024 * 1024)
-                fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
-            else
-                fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
-            // document.getElementById('fileName').innerHTML = 'Name: ' + file.name;
-            // document.getElementById('fileSize').innerHTML = 'Size: ' + fileSize;
-            // document.getElementById('fileType').innerHTML = 'Type: ' + file.type;
-            uploadFile();
+        function uploadFile() {
+            var fd = new FormData();
+            fd.append("fileToUpload", document.getElementById('fileToUpload').files[0]);
+            var xhr = new XMLHttpRequest();
+            xhr.upload.addEventListener("progress", uploadProgress, false);
+            xhr.addEventListener("load", uploadComplete, false);
+            xhr.addEventListener("error", uploadFailed, false);
+            xhr.addEventListener("abort", uploadCanceled, false);
+            xhr.open("POST", "/upload"); //修改成自己的接口
+            xhr.send(fd);
         }
-    }
 
-    function uploadFile() {
-        var fd = new FormData();
-        fd.append("fileToUpload", document.getElementById('fileToUpload').files[0]);
-        var xhr = new XMLHttpRequest();
-        xhr.upload.addEventListener("progress", uploadProgress, false);
-        xhr.addEventListener("load", uploadComplete, false);
-        xhr.addEventListener("error", uploadFailed, false);
-        xhr.addEventListener("abort", uploadCanceled, false);
-        xhr.open("POST", "/upload"); //修改成自己的接口
-        xhr.send(fd);
-    }
-
-    function uploadProgress(evt) {
-        // alert(Math.round(evt.loaded * 100 / evt.total))
-        if (evt.lengthComputable) {
-            var percentComplete = Math.round(evt.loaded * 100 / evt.total);
-            document.getElementById('progressNumber').innerHTML = '(' + percentComplete.toString() + '%)';
-        } else {
-            document.getElementById('progressNumber').innerHTML = 'unable to compute';
+        function uploadProgress(evt) {
+            // alert(Math.round(evt.loaded * 100 / evt.total))
+            if (evt.lengthComputable) {
+                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+                document.getElementById('progressNumber').innerHTML = '(' + percentComplete.toString() + '%)';
+            } else {
+                document.getElementById('progressNumber').innerHTML = 'unable to compute';
+            }
         }
-    }
 
-    function uploadComplete(evt) {
-        /* 服务器端返回响应时候触发event事件*/
-        console.log(evt)
-        var result = JSON.parse(evt.target.responseText);
-        vm.goods_cover = result.path.replace("public", "")
-        // alert(vm.goods_cover)
-        layer.msg("封面图片上传完成！")
-    }
+        function uploadComplete(evt) {
+            /* 服务器端返回响应时候触发event事件*/
+            console.log(evt)
+            var result = JSON.parse(evt.target.responseText);
+            vm.goods_cover = result.path.replace("public", "")
+                // alert(vm.goods_cover)
+            layer.msg("封面图片上传完成！")
+        }
 
-    function uploadFailed(evt) {
-        alert("There was an error attempting to upload the file.");
-    }
+        function uploadFailed(evt) {
+            alert("There was an error attempting to upload the file.");
+        }
 
-    function uploadCanceled(evt) {
-        alert("The upload has been canceled by the user or the browser dropped the connection.");
-    }
+        function uploadCanceled(evt) {
+            alert("The upload has been canceled by the user or the browser dropped the connection.");
+        }
     </script>
 </body>
 

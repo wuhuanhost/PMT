@@ -36,7 +36,8 @@ exports.updateClassifyById = function(req, res) {
     var cla = {
         id: req.body.id,
         name: req.body.name,
-        remark: req.body.remark
+        remark: req.body.remark,
+        state: req.body.state
     }
     cb.updateClassifyById(cla, function(err, result) {
         if (err) {
