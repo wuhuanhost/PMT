@@ -159,7 +159,7 @@
                     this.id = obj.id;
                     this.name = obj.name;
                     this.remark = obj.remark;
-                    this.state = obj.state;
+                    this.state = obj.state === undefined ? 0 : obj.state;
                     this.$nextTick(function() {
                         this.action = "update";
                         mylayer = layer.open({
@@ -199,8 +199,7 @@
                 url: "/classify/update",
                 data: data,
                 success: function(data) {
-                    layer.msg("分类修改成功！！！")
-                    layer.close(mylayer);
+                    msg(data);
                 },
                 dataType: 'json'
             });
@@ -222,11 +221,24 @@
                 url: "/classify/add",
                 data: data,
                 success: function(data) {
-                    layer.msg("分类添加成功！！！")
-                    layer.close(mylayer);
+                    msg(data);
                 },
                 dataType: 'json'
             });
+        }
+
+        function msg(data) {
+            if (data.success) {
+                layer.msg(data.msg);
+                layer.close(mylayer);
+            } else {
+                layer.confirm(data.msg, {
+                    btn: ['确认'] //按钮
+                }, function() {
+                    // window.parent.location.reload();
+                    window.location.href = "/logout"
+                });
+            }
         }
     </script>
 </body>

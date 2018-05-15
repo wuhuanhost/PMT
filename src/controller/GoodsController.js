@@ -2,7 +2,7 @@ const good = require('../biz/GoodsBiz')
 
 
 exports.add = function(req, res) {
-    var goods={};
+    var goods = {};
     goods.name = req.body.name
     goods.remark = req.body.remark;
     goods.goods_cover = req.body.goods_cover;
@@ -15,11 +15,12 @@ exports.add = function(req, res) {
     goods.classifyId = req.body.classifyId
     good.add(goods, function(err, result) {
         if (err) {
-            res.json({ "err": true, "msg": "服务器错误，稍后重试！" });
+            res.json({ success: false, msg: "服务器错误，稍后重试！" });
         } else {
             res.json({
-                "data": "",
-                "msg": "商品添加成功"
+                data: "",
+                msg: "商品添加成功",
+                success: true
             });
         }
     });
@@ -29,11 +30,12 @@ exports.add = function(req, res) {
 exports.queryAll = function(req, res) {
     good.queryAll(function(err, result) {
         if (err) {
-            res.json({ "err": true, "msg": "服务器错误，稍后重试！" });
+            res.json({ success: false, msg: "服务器错误，稍后重试！" });
         } else {
             res.json({
-                "data": result,
-                "msg": "数据获取成功"
+                data: result,
+                msg: "商品数据获取成功",
+                success: true
             });
         }
     })
@@ -42,7 +44,7 @@ exports.queryAll = function(req, res) {
 
 
 exports.updateGoodsById = function(req, res) {
-    var goods={};
+    var goods = {};
     goods.name = req.body.name
     goods.remark = req.body.remark;
     goods.goods_cover = req.body.goods_cover;
@@ -53,14 +55,15 @@ exports.updateGoodsById = function(req, res) {
     goods.price_12 = req.body.price_12;
     goods.price_24 = req.body.price_24;
     goods.classifyId = req.body.classifyId;
-    goods.id=req.body.id;
+    goods.id = req.body.id;
     good.updateGoodsById(goods, function(err, result) {
         if (err) {
-            res.json({ "err": true, "msg": "服务器错误，稍后重试！" });
+            res.json({ success: false, msg: "服务器错误，稍后重试！" });
         } else {
             res.json({
-                "data": "",
-                "msg": "修改成功"
+                data: "",
+                msg: "修改成功",
+                success: true
             });
         }
     })

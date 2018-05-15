@@ -569,8 +569,7 @@
                 url: "/goods/update",
                 data: data,
                 success: function(data) {
-                    layer.msg("商品修改成功！！！")
-                    layer.close(mylayer);
+                    msg(data);
                 },
                 dataType: 'json'
             });
@@ -606,14 +605,26 @@
                 url: "/goods/add",
                 data: data,
                 success: function(data) {
-                    layer.msg("商品添加成功！！！")
-                    layer.close(mylayer);
+                    msg(data);
                 },
                 dataType: 'json'
             });
         }
 
-
+        function msg(data) {
+            if (data.success) {
+                layer.msg(data.msg);
+                layer.close(mylayer);
+            } else {
+                // layer.msg(data.msg);
+                layer.confirm(data.msg, {
+                    btn: ['确认'] //按钮
+                }, function() {
+                    // window.parent.location.reload();
+                    window.location.href = "/logout"
+                });
+            }
+        }
 
         // $(".goods-cover").hover(function() {
         //     layer.tips('点击按钮上传文件', '#fileToUpload', {

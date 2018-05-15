@@ -21,17 +21,20 @@
     {
       "id": "efcb8271-5742-11e8-984f-63f5e75aa6f8",
       "name": "母婴玩具",
-      "remark": "母婴玩具"
+      "remark": "母婴玩具",
+      "state": "0"
     },
     {
       "id": "f7763f60-5742-11e8-984f-63f5e75aa6f8",
       "name": "家具",
-      "remark": "家具"
+      "remark": "家具",
+      "state": "0"
     },
     {
       "id": "feb36d70-5742-11e8-984f-63f5e75aa6f8",
       "name": "Tv",
-      "remark": "Tv"
+      "remark": "Tv",
+      "state": "0"
     }
   ],
   "goods": [

@@ -66,6 +66,10 @@
             width: 100%;
             height: 99%;
         }
+        
+        .menu-item {
+            cursor: pointer;
+        }
     </style>
     <script>
         const uid = '<%= user.uid%>';
@@ -86,11 +90,37 @@
                 <%- include menu.ejs %>
             </div>
             <div class="right">
-
                 <iframe id="content" name="content" frameborder="0" src="/admin/test1.html"></iframe>
             </div>
         </div>
     </div>
+
+    <script>
+        function openWindow(href, dom) {
+            window.open(href, "content");
+            var list = document.querySelectorAll(".menu-item");
+            for (var i = 0; i < list.length; i++) {
+                removeClass(list[i], "active");
+            }
+            addClass(dom, "active");
+        }
+
+        function addClass(elements, cName) {
+            if (!hasClass(elements, cName)) {
+                elements.className += " " + cName;
+            };
+        };
+
+        function removeClass(elements, cName) {
+            if (hasClass(elements, cName)) {
+                elements.className = elements.className.replace(new RegExp("(\\s|^)" + cName + "(\\s|$)"), " ");
+            };
+        };
+
+        function hasClass(elements, cName) {
+            return !!elements.className.match(new RegExp("(\\s|^)" + cName + "(\\s|$)"));
+        };
+    </script>
 </body>
 
 </html>

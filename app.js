@@ -7,7 +7,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var admin = require('./routes/admin');
 
 var app = express();
 var fs = require('fs');
@@ -32,15 +32,13 @@ app.use(session({
     saveUninitialized: true,
     secret: 'test',
     cookie: {
-        maxAge: 1000 * 10 * 1
+        maxAge: 1000 * 60 * 30
     }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
-
-
+app.use('/admin', admin);
 
 //这里就是接受form表单请求的接口路径，请求方式为post。
 app.post('/upload', mutipartMiddeware, function(req, res) {
@@ -78,7 +76,9 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     console.log("===============================")
     console.log(err.stack)
-    res.render('error');
+    res.render('error', {
+        err: err
+    });
 });
 
 module.exports = app;

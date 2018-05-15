@@ -6,11 +6,12 @@ exports.add = function(req, res) {
     var remark = req.body.remark;
     cb.add(name, remark, function(err, result) {
         if (err) {
-            res.json({ "err": true, "msg": "服务器错误，稍后重试！" });
+            res.json({ success: false, msg: "服务器错误，稍后重试！" });
         } else {
             res.json({
-                "data": "",
-                "msg": "添加成功"
+                data: "",
+                msg: "分类添加成功",
+                success: true
             });
         }
     });
@@ -20,11 +21,12 @@ exports.add = function(req, res) {
 exports.queryAllClassify = function(req, res) {
     cb.queryAllClassify(function(err, result) {
         if (err) {
-            res.json({ "err": true, "msg": "服务器错误，稍后重试！" });
+            res.json({ success: false, msg: "服务器错误，稍后重试！" });
         } else {
             res.json({
-                "data": result,
-                "msg": "数据获取成功"
+                data: result,
+                msg: "分类数据获取成功",
+                success: true
             });
         }
     })
@@ -41,11 +43,12 @@ exports.updateClassifyById = function(req, res) {
     }
     cb.updateClassifyById(cla, function(err, result) {
         if (err) {
-            res.json({ "err": true, "msg": "服务器错误，稍后重试！" });
+            res.json({ success: false, msg: "服务器错误，稍后重试！" });
         } else {
             res.json({
-                "data": "",
-                "msg": "修改成功"
+                data: "",
+                msg: "分类修改成功",
+                success: true
             });
         }
     })
