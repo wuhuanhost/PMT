@@ -8,21 +8,14 @@ var check = require('../src/filter/check.js');
 
 console.log(check)
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    if (req.session.account && req.session.uid && req.session.token) {
-        res.redirect(301, '/admin');
-    } else {
-        res.render('index', {
-            title: 'Express'
-        });
-    }
-});
 
 router.get('/logout', function(req, res, next) {
+    console.log("=====================================")
     delete req.session.account;
     delete req.session.uid;
     delete req.session.session;
+    console.log("=====================================")
+    console.log(req.session.session)
     res.redirect(301, '/index');
 })
 
@@ -62,8 +55,20 @@ router.post('/login', function(req, res, next) {
 
 //后台登录首页
 router.get('/index', function(req, res, next) {
-    req.session.code = "123456";
-    res.render('index', { code: 12 });
+    // req.session.code = "123456";
+    // res.render('index', { code: 12 });
+    console.log(req.session.account + "       " + req.session.uid + "       " + req.session.token)
+    console.log(req.session.account !== undefined && req.session.uid !== undefined && req.session.token !== undefined)
+    if (req.session.account !== undefined && req.session.uid !== undefined && req.session.token !== undefined) {
+        res.redirect(301, '/admin');
+    } else {
+        res.render('index');
+    }
+});
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.redirect(301, '/index');
 });
 
 
