@@ -21,19 +21,23 @@ router.get('/logout', function(req, res, next) {
 
 //登录后的管理页面
 router.get('/admin', check.checkAdminLogin, function(req, res, next) {
-    var menu = [{
-            name: "分类管理",
-            href: "/admin/test1.html"
-        }, {
-            name: "商品管理",
-            href: "/admin/test2.html"
-        }
-        // , {
-        //     name: "测试菜单3",
-        //     href: "/admin/test3.html"
-        // }
-    ];
-    res.render('admin', { menu: menu, user: { uid: req.session.uid, token: req.session.token, account: req.session.account } });
+    if (req.session.account !== undefined && req.session.uid !== undefined && req.session.token !== undefined) {
+        var menu = [{
+                name: "分类管理",
+                href: "/admin/test1.html"
+            }, {
+                name: "商品管理",
+                href: "/admin/test2.html"
+            }
+            // , {
+            //     name: "测试菜单3",
+            //     href: "/admin/test3.html"
+            // }
+        ];
+        res.render('admin', { menu: menu, user: { uid: req.session.uid, token: req.session.token, account: req.session.account } });
+    } else {
+        res.redirect(301, '/index');
+    }
 
 });
 
