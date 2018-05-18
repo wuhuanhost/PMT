@@ -82,6 +82,17 @@
             margin: 5%;
         }
         
+        #file-progress {
+            position: absolute;
+            width: 0%;
+            height: 100%;
+            background: #5cb85c;
+            top: 0;
+            left: 0;
+            border: #5cb85c;
+            opacity: 0.6;
+        }
+        
         .file input {
             position: absolute;
             font-size: 10px;
@@ -189,6 +200,7 @@
                     <img style="max-height:100%;max-width:100%;" :src="goods_cover" alt="...">
                 </div>
                 <a class="file" id="file">上传封面<span id="progressNumber"></span>
+                    <div id="file-progress"></div>
                     <input type="file" class="" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" />
                 </a>
             </div>
@@ -670,6 +682,7 @@
             if (evt.lengthComputable) {
                 var percentComplete = Math.round(evt.loaded * 100 / evt.total);
                 document.getElementById('progressNumber').innerHTML = '(' + percentComplete.toString() + '%)';
+                $("#file-progress").css("width", percentComplete.toString() + "%")
             } else {
                 document.getElementById('progressNumber').innerHTML = 'unable to compute';
             }
